@@ -61,4 +61,28 @@ RSpec.describe Post, type: :model do
     )
     expect(post).to_not be_valid
   end
+  it 'is invalid with a negative comments_counter' do
+    post = Post.new(comments_counter: -1)
+    expect(post).to_not be_valid
+  end
+
+  it 'is valid with a zero comments_counter value' do
+    post = Post.new(
+      title: 'Title',
+      comments_counter: 0,
+      likes_counter: 0,
+      author: tom
+    )
+    expect(post).to be_valid
+  end
+
+  it 'is valid with a positive comments_counter value' do
+    post = Post.new(
+      title: 'Title',
+      comments_counter: 1,
+      likes_counter: 0,
+      author: tom
+    )
+    expect(post).to be_valid
+  end
 end
