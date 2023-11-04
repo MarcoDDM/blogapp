@@ -10,5 +10,4 @@ RSpec.describe User, type: :model do
     user = User.new(name: 'Tom', posts_counter: -1)
     expect(user).to_not be_valid
   end
-
 end

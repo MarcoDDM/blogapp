@@ -25,7 +25,7 @@ RSpec.describe Post, type: :model do
   it 'is invalid with a title exceeding 250 characters' do
     title = 'a' * 251
     post = Post.new(
-      title: title,
+      title:,
       comments_counter: 0,
       likes_counter: 0,
       author: tom
