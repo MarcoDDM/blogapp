@@ -1,8 +1,10 @@
 class Comment < ApplicationRecord
-  belongs_to :user
+  belongs_to :author, foreign_key: 'author_id', class_name: 'User'
   belongs_to :post
 
   after_create :update_post_comments_counter
+
+  validates :text, presence: true
 
   private
 
