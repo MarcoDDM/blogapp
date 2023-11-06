@@ -17,7 +17,7 @@ RSpec.describe UsersController, type: :request do
       expect(response).to render_template(:index)
     end
   end
-  
+
   describe 'Request spec for users show' do
     it 'returns a successful response' do
       get '/users/:id'
