@@ -1,15 +1,91 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0, 900;1,300;1,400;1,500;1,900&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  color: black;
+}
+
+main {
+  margin: 10% 12%;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.center {
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.users-title {
+  padding: 15px;
+  margin: 15px 0;
+}
+
+.card {
+  display: flex;
+  padding: 10px;
+  margin: 10px 0;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.3);
+  transition: 0.4s;
+}
+
+.flexColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.hover {
+  cursor: pointer;
+}
+
+.hover:hover {
+  transform: scale(1.03);
+}
+
+.user-image {
+  flex: 20%;
+}
+
+.user-data {
+  padding: 10px;
+  text-align: left;
+  margin: 3%;
+  flex: 70%;
+}
+
+.border {
+  border: 3px solid black;
+  border-radius: 5px;
+}
+
+.number-posts {
+  padding: 10px;
+  text-align: right;
+}
+
+.btn {
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid #2d2d2d;
+  box-shadow: 3px 5px;
+  padding: 0.25rem 0.5rem;
+}
+
+.comments-container {
+  padding: 10px;
+}
