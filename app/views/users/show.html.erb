@@ -1,1 +1,14 @@
-<h1>User Profile</h1>
+<main>
+  <section>
+    <ul>
+      <% @user.recent_posts.each do |post| %>
+        <%= link_to user_user_post_path(@user, post) do %>
+          <li class="card flexColumn hover">
+            <h3 class="left"><%= post.title %></h3>
+            <h4 class="left"><%= post.text %></h4>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
+</main>
