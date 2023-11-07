@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   def index
-    # Placeholder: List all users
+    @users = User.all
   end
 
   def show
-    # Placeholder: Display user details
+    @user = User.find(params[:id])
   end
 end
