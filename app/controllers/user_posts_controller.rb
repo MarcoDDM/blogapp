@@ -1,9 +1,10 @@
 class UserPostsController < ApplicationController
   def index
-    # Placeholder: List all posts by a given user
+    @user = User.find(params[:user_id])
+    @posts = @user.posts
   end
 
   def show
-    # Placeholder: Display post details
+    @post = Post.find(params[:id])
   end
 end
