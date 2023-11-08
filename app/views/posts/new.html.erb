@@ -1,0 +1,10 @@
+<main>
+  <h1>Add a new post</h1>
+  <%= form_with model: @post, url: user_posts_path, class: "form" do |form| %>
+    <%= form.label :title %> <br>
+    <%= form.text_field :title %> <br>
+    <%= form.label :text %> <br>
+    <%= form.text_area :text , cols: 30, rows: 10 %> <br>
+    <%= form.submit "Submit", class: "btn" %>
+  <% end %>
+</main>
