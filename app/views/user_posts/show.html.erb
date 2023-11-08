@@ -1,0 +1,16 @@
+<main>
+  <section class="card flexColumn">
+    <div class="card flexColumn">
+      <h2><%= @post.title %></h2>
+      <p><%= @post.text %></p>
+    </div>
+    <div class="comments-container">
+      <h4>Comments:</h4>
+      <ul>
+        <% @post.comments.each do |comment| %>
+          <p><%= comment.author.name %>: <%= comment.text %></p>
+        <% end %>
+      </ul>
+    </div>
+  </section>
+</main>
