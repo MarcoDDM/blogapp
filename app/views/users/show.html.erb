@@ -1,14 +1,34 @@
 <main>
   <section>
+    <div class="card">
+      <div class="user-image border"></div>
+      <div class="user-data border">
+        <h1><%= @user.name %></h1>
+        <p class="number-posts">Number of posts: <%= @user.posts_counter %></p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="flexColumn">
+        <h3>Bio:</h3>
+        <p><%= @user.bio %></p>
+      </div>
+    </div>
+  </section>
+  <section class="center">
     <ul>
       <% @user.recent_posts.each do |post| %>
-        <%= link_to user_user_post_path(@user, post) do %>
+        <%= link_to user_posts_path(@user) do %>
           <li class="card flexColumn hover">
-            <h3 class="left"><%= post.title %></h3>
-            <h4 class="left"><%= post.text %></h4>
+            <h3 class="left"><%= post.title%></h3>
+            <h4 class="left"><%= post.text%></h4>
+            <div class="right">
+              <span>Comments: <%= post.comments_counter %></span>
+              <span class="left">Likes: <%= post.likes_counter %> </span>
+            </div>
           </li>
         <% end %>
       <% end %>
     </ul>
-  </section>
+    <%= link_to "See all posts", user_posts_path(user_id: @user.id), class: "btn" %>
+  </section> 
 </main>

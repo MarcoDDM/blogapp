@@ -11,7 +11,7 @@
   <section>
     <ul>
       <% @posts.each do |post| %>
-        <%= link_to user_user_post_path(user_id: post.author_id, id: post.id) do %>
+        <%= link_to user_post_path(user_id: post.author_id, id: post.id) do %>
           <li class="card hover flexColumn">
             <div class="card flexColumn">
               <h2><%= post.title %></h2>
@@ -34,4 +34,5 @@
       <% end %>
     </ul>
   </section>
+  <%= link_to "Pagination", user_posts_path(user_id: @user.id), class: "btn pagination" %>
 </main>
