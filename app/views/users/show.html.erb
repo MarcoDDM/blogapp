@@ -5,10 +5,13 @@
       <div class="user-data border">
         <h1><%= @user.name %></h1>
         <p class="number-posts">Number of posts: <%= @user.posts_counter %></p>
+        <div class="right">
+          <%= link_to "Add a post", new_user_post_path(@user), class: "btn right" %>
+        </div>
       </div>
     </div>
     <div class="card">
-      <div class="flexColumn">
+      <div class="column">
         <h3>Bio:</h3>
         <p><%= @user.bio %></p>
       </div>
@@ -18,7 +21,7 @@
     <ul>
       <% @user.recent_posts.each do |post| %>
         <%= link_to user_posts_path(@user) do %>
-          <li class="card flexColumn hover">
+          <li class="card column hover">
             <h3 class="left"><%= post.title%></h3>
             <h4 class="left"><%= post.text%></h4>
             <div class="right">
