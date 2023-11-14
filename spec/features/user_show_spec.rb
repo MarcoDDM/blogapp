@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe 'User integration tests', type: :feature do
   before do
-    User.create(id: 1, name: 'John', photo: 'https://picsum.photos/200/300', bio: 'Pitcher from Mexico.', posts_counter: 0)
+    User.create(id: 1, name: 'John', photo: 'https://picsum.photos/200/300', bio: 'Pitcher from Mexico.',
+                posts_counter: 0)
   end
 
   def all_users

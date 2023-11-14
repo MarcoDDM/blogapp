@@ -49,8 +49,8 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
-  gem 'rspec-rails', '~> 5.0'
   gem 'capybara'
+  gem 'rspec-rails', '~> 5.0'
   gem 'selenium-webdriver' # O el driver que prefieras
 end
 
