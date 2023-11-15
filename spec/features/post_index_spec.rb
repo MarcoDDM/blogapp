@@ -8,10 +8,11 @@ RSpec.describe 'Post Index', type: :system do
     User.create(name: 'Adnan', photo: 'https://unsplash.com/photos/ABC123', posts_counter: 5)
   end
   let!(:post) do
-    Post.create(title: 'My First Post', text: 'This is my first post', author: user, comments_counter: 0, likes_counter: 0)
+    Post.create(title: 'My First Post', text: 'This is my first post', author: user, comments_counter: 0,
+                likes_counter: 0)
   end
   let!(:comment) do
-    Comment.create(text: 'This is my first comment', author: user, post: post)
+    Comment.create(text: 'This is my first comment', author: user, post:)
   end
   it "displays the user's profile picture on user posts page" do
     visit users_path(user_id: user.id)
