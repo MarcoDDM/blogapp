@@ -141,8 +141,7 @@ RSpec.describe User, type: :system do
       expect(page).to have_content("#{subject.posts_counter} Post#{subject.posts_counter == 1 ? '' : 's'}")
     end
     it 'shows the user bio' do
-      expect(page).to have_content("Brian Tally\n3 Posts\n
-      Add a post\n@@ -19,19 +19,19 @@\nComments: 0 Likes: 0\nWelcome to my second post")
+      expect(page).to have_content("Brian Tally\n3 Posts\nAdd a post\n@@ -19,19 +19,19 @@\nWelcome to my blog\nThis is my first post\nComments: 0 Likes: 0\nWelcome to my second post\nThis is my second post\nComments: 0 Likes: 0\nWelcome to my third post\nThis is my third post\nComments: 0 Likes: 0\nSee all posts")
     end
 
     it 'shows the user\'s first three posts' do
