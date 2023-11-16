@@ -1,4 +1,6 @@
-class PostsController < ApplicationRecord
+class PostsController < ApplicationController
+  load_and_authorize_resource
+
   belongs_to :author, class_name: 'User', foreign_key: 'author_id'
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -25,5 +27,14 @@ class PostsController < ApplicationRecord
 
   def recent_comments
     comments.order(created_at: :desc).includes([:author]).limit(5)
+  end
+
+  # Add the delete action as in comments controller
+  def destroy
+    @post.destroy
+    respond_to do |format|
+      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 end
