@@ -1,31 +1,29 @@
-class PostsController < ApplicationController
-  def index
-    @user = User.find(params[:user_id])
-    @posts = @user.posts
+class PostsController < ApplicationRecord
+  belongs_to :author, class_name: 'User', foreign_key: 'author_id'
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+
+  after_create :update_author_posts_counter
+
+  validates :title, presence: true, allow_blank: false, length: { maximum: 250 }
+  validates :comments_counter, numericality: { only_integer: true, allow_nil: true },
+                               comparison: { greater_than_or_equal_to: 0, allow_nil: true }
+  validates :likes_counter, numericality: { only_integer: true, allow_nil: true },
+                            comparison: { greater_than_or_equal_to: 0, allow_nil: true }
+
+  def update_author_posts_counter
+    author.update_posts_counter
   end
 
-  def show
-    @post = Post.find(params[:id])
+  def update_comments_counter
+    update(comments_counter: comments.count)
   end
 
-  def new
-    @post = Post.new
+  def update_likes_counter
+    update(likes_counter: likes.count)
   end
 
-  def create
-    @post = current_user.posts.new(post_params)
-
-    if @post.save
-      redirect_to user_path(id: @post.author_id), notice: 'Post was successfully created.'
-    else
-      flash.now[:alert] = 'An error has occurred while creating the post.'
-      render :new
-    end
-  end
-
-  private
-
-  def post_params
-    params.require(:post).permit(:title, :text)
+  def recent_comments
+    comments.order(created_at: :desc).includes([:author]).limit(5)
   end
 end
