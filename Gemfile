@@ -8,6 +8,8 @@ gem 'rails', '~> 7.0.7'
 
 gem 'devise'
 
+gem 'cancancan', '~> 3.1'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
@@ -55,6 +57,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 5.0'
   gem 'selenium-webdriver' # O el driver que prefieras
 end
+
+gem 'letter_opener', group: :development
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]

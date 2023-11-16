@@ -4,9 +4,11 @@
       <div class="user-image border"></div>
       <div class="user-data border">
         <h1><%= @user.name %></h1>
-        <p class="number-posts">Number of posts: <%= @user.posts_counter %></p>
+        <p class="number-posts"><%= @user.posts_counter %> Posts</p>
         <div class="right">
-          <%= link_to "Add a post",new_user_post_path(@user), class: "btn right" %>
+        <% if current_user %>
+        <%= link_to "Add a post",new_user_post_path(@user), method: :get, class: "btn right" %>
+      <% end %>
         </div>
       </div>
     </div>
@@ -15,8 +17,8 @@
     <ul>
       <% @posts.each do |post| %>
         <%= link_to user_post_path(user_id: post.author_id, id: post.id) do %>
-          <li class="card hover column">
-            <div class="card column">
+          <li class="card hover">
+            <div class="card">
               <h2><%= post.title %></h2>
               <p><%= post.text %></p>
               <div class="right">
@@ -24,7 +26,7 @@
                 <span>Likes: <%= post.likes_counter %> </span>
               </div>
             </div>
-            <div class="comments-container">
+            <div class="commets-container">
               <h4>Comments:</h4>
               <ul>
                 <% post.recent_comments.each do |comment| %>

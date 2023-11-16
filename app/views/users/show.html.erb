@@ -1,14 +1,21 @@
 <main>
   <section>
     <div class="card">
-      <%= image_tag(@user.photo, class: "user-image border") %>
-      <div class="user-data border">
+    <% if @user.photo.present? %>
+    <%= image_tag(user.photo, class: "user-image border") %>
+  <% else %>
+    <!-- Provide a placeholder image or default image here if 'user.photo' is nil -->
+  <% end %>
+        <div class="user-data border">
         <h1><%= @user.name %></h1>
         <p class="number-posts"><%= @user.posts_counter %> Posts</p>
-        <div class="right">
-          <%= link_to "Add a post", new_user_post_path(@user), class: "btn right" %>
-        </div>
-	@@ -19,19 +19,19 @@
+    </div>
+    <div class="card">
+      <div class="column">
+        <h3>Bio:</h3>
+        <p><%= @user.bio %></p>
+      </div>
+    </div>
   </section>
   <section class="center">
     <ul>
