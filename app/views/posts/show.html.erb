@@ -8,17 +8,27 @@
         <span>Likes: <%= @post.likes_counter %> </span>
       </div>
       <div class="button_field">
+      <% if user_signed_in? %>
         <%= link_to "Comment", new_user_post_comment_path(user_id: @post.author_id, post_id: @post.id ), class: "btn" %>
         <%= form_with model: @like, url: user_post_likes_path(post_id: @post.id) do |form| %>
           <%= form.submit "Like", class: "btn" %>
         <% end %>
+        <% if can? :destroy, @post %>
+          <%= button_to "Delete post", user_post_path(user_id: @post.author.id, post_id: @post.id), method: :delete, class: "btn"  %>
+        <% end %>
+      <% end %>
       </div>
     </div>
     <div class="commets-container">
       <h4>Comments:</h4>
       <ul>
-        <% @post.comments.each do |comment| %>
+        <% @post.comments.includes(:author).includes(:post).each do |comment| %>
+        <li>
           <p><%= comment.author.name %>: <%= comment.text %></p>
+          <% if can? :destroy, comment %>
+            <%= button_to "Delete", user_post_comment_path(user_id: comment.author.id, post_id: comment.post.id, id: comment.id), method: :delete, class: "btn"  %>
+          <% end %>
+        </li>
         <% end %>
       </ul>
     </div>
