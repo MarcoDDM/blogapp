@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
@@ -15,6 +13,4 @@ class Ability
     can :destroy, Comment, user_id: user.id
     can :destroy, Comment if user.role == 'admin'
   end
-end
-
 end
