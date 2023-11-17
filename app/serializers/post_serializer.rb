@@ -1,3 +1,7 @@
 class PostSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :author, :title, :text, :comments_counter, :likes_counter
+
+  def author
+    object.author.name
+  end
 end
